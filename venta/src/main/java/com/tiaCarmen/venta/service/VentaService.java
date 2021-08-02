@@ -8,6 +8,7 @@ import com.tiaCarmen.venta.Util.Utils;
 import com.tiaCarmen.venta.dto.PagoBoletaDTO;
 import com.tiaCarmen.venta.dto.PagoFacturaDTO;
 import com.tiaCarmen.venta.dto.ProductoDTO;
+import com.tiaCarmen.venta.dto.ResultadoDTO;
 import com.tiaCarmen.venta.dto.VentaDTO;
 import com.tiaCarmen.venta.model.Boleta;
 import com.tiaCarmen.venta.model.Factura;
@@ -109,11 +110,13 @@ public class VentaService {
      * @param json
      * @return
      */
-	public String agregarVenta(String json) {
+	public ResultadoDTO agregarVenta(String json) {
 
         VentaDTO rsp = new VentaDTO();
         Gson gson = new Gson();
+        ResultadoDTO resultado = new ResultadoDTO();
         String Guardado = Constantes.exito_guardar_venta;
+        resultado.setResultado(Guardado);
         try {
             json = json.replace("\\", "");
             json = json.replace("{\"json\":[\"", "");
@@ -130,8 +133,9 @@ public class VentaService {
         } catch (Exception e) {
             System.out.println(e);
             Guardado = Constantes.error_guardar_venta;
+            resultado.setResultado(Guardado);
         }
-        return Guardado;
+        return resultado;
     }
 
 	
@@ -141,11 +145,13 @@ public class VentaService {
 	 * @param json
 	 * @return
 	 */
-	public String pagarBoleta(String json) {
+	public ResultadoDTO pagarBoleta(String json) {
 		
 		PagoBoletaDTO rsp = new PagoBoletaDTO();
 		Gson gson = new Gson();
+		ResultadoDTO resultado = new ResultadoDTO();
 		String Pagado = Constantes.exito_pagar_boleta;
+		resultado.setResultado(Pagado);
 		
 		 try {
 	            json = json.replace("\\", "");
@@ -168,6 +174,7 @@ public class VentaService {
 				}else {
 					System.out.println("NO realizar Compra");
 					Pagado = Constantes.error_pagar_boleta;
+					resultado.setResultado(Pagado);
 				}
 	            
 	          
@@ -175,10 +182,11 @@ public class VentaService {
 	        } catch (Exception e) {
 	            System.out.println(e);
 	            Pagado = Constantes.error_pagar_boleta;
+	            resultado.setResultado(Pagado);
 	        }
 		
 		
-		return Pagado;
+		return resultado;
 	}
 
 	/**
@@ -187,9 +195,10 @@ public class VentaService {
 	 * @param json
 	 * @return
 	 */
-	public String pagarFactura(String json) {
+	public ResultadoDTO pagarFactura(String json) {
 		
 		PagoFacturaDTO rsp = new PagoFacturaDTO();
+		ResultadoDTO resultado = new ResultadoDTO();
 		Gson gson = new Gson();
 		String Pagado = Constantes.exito_pagar_Factura;
 		
@@ -215,6 +224,7 @@ public class VentaService {
 				}else {
 					System.out.println("NO realizar Compra");
 					Pagado = Constantes.error_pagar_Factura;
+					resultado.setResultado(Pagado);
 				}
 	            
 	          
@@ -222,10 +232,11 @@ public class VentaService {
 	        } catch (Exception e) {
 	            System.out.println(e);
 	            Pagado = Constantes.error_pagar_Factura;
+	            resultado.setResultado(Pagado);
 	        }
 		
-		
-		return Pagado;
+		 resultado.setResultado(Pagado);
+		return resultado;
 	}
 
 	
