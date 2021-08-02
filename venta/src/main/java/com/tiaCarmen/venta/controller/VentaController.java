@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tiaCarmen.venta.dto.ResultadoDTO;
 import com.tiaCarmen.venta.dto.VentaDTO;
 import com.tiaCarmen.venta.service.VentaService;
 
@@ -40,7 +41,7 @@ public class VentaController {
 	 * @return
 	 */
 	@PostMapping("/agregarventa")
-	public String AgregarVenta(@RequestBody String json) {
+	public ResultadoDTO AgregarVenta(@RequestBody String json) {
 
 		return service.agregarVenta(json);
 	}
@@ -51,7 +52,7 @@ public class VentaController {
 	 * @return
 	 */
 	@PostMapping("/pagarBoleta")
-	public String PagarBoleta(@RequestBody String json) {
+	public ResultadoDTO PagarBoleta(@RequestBody String json) {
 		
 		return  service.pagarBoleta(json);
 		
@@ -63,7 +64,7 @@ public class VentaController {
 	 * @return
 	 */
 	@PostMapping("/pagarFactura")
-	public String PagarFactura(@RequestBody String json) {
+	public ResultadoDTO PagarFactura(@RequestBody String json) {
 		
 		return  service.pagarFactura(json);
 		
