@@ -212,12 +212,12 @@ public class VentaService {
 	            Long NomeroBoleta = rsp.numeroVenta;
 	            String rutEmpresa = rsp.rutEmpresa;
 	            var PagarFactura = ventaDao.findByVenta(NomeroBoleta);
-	          
+	            
 	            if (PagarFactura.size() > 0) {
 					System.out.println("Puede realizar Compra");
 					var numero = facturaDao.getFactura();
 					Long numeroBoleta = Utils.ValidarVacio(numero);
-					Factura nuevaVentaFactura = new Factura(numeroBoleta, NomeroBoleta, rutEmpresa);
+					Factura nuevaVentaFactura = new Factura(numeroBoleta, PagarFactura.get(0).getNumero(), rutEmpresa);
 					ventaDao.pagarBoleta(NomeroBoleta);
 					facturaDao.save(nuevaVentaFactura);
 					

@@ -25,7 +25,7 @@ public interface VentaDao extends CrudRepository<Venta, Long> {
 	Long getNumero();
 
 	
-	@Query(value = "Select * from VENTA where NUMEROVENTA = :NUMEROVENTA and ESTADO = 0", nativeQuery = true)
+	@Query(value = "Select * from VENTA where ID_VOUCHER = :NUMEROVENTA and ESTADO = 0", nativeQuery = true)
 	List<Venta> findByVenta(@Param("NUMEROVENTA") Long NUMEROVENTA);
 	
 	@Modifying
