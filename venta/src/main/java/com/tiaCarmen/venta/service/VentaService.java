@@ -124,7 +124,7 @@ public class VentaService {
 
             System.out.println("Verificar Json Final : " + json);
             rsp = gson.fromJson(json, VentaDTO.class);
-
+            
             var numero = ventaDao.getNumero();
 
             Venta nuevaVenta = new Venta(numero, rsp.monto, rsp.tipoVenta, rsp.voucherId);
@@ -167,7 +167,7 @@ public class VentaService {
 					System.out.println("Puede realizar Compra");
 					var numero = boletaDao.getBoleta();
 					Long numeroBoleta = Utils.ValidarVacio(numero);
-					Boleta nuevaVentaBoleta = new Boleta(numeroBoleta, rsp.numeroVenta);
+					Boleta nuevaVentaBoleta = new Boleta(numeroBoleta, PagarBoleta.get(0).getNumero());
 					ventaDao.pagarBoleta(NomeroBoleta);
 					boletaDao.save(nuevaVentaBoleta);
 					
