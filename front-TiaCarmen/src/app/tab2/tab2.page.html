@@ -1,0 +1,192 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <h1>Factura, Empresa y Representante</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="venta ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Pagar Factura</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h2>Pagar Factura</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Factura Id
+      </ion-col>
+      <ion-col>
+        <ion-input formControlFacturaId="name" type="text" [formControl]="formControlFacturaId"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Rut Rep Legal
+      </ion-col>
+      <ion-col>
+        <ion-input formControlRepLegalRut="name" type="text" [formControl]="formControlRepLegalRut"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="pagarFactura()">Pagar Factura</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+
+  <h2>Consulta Cliente</h2>
+
+  <form [formGroup]="consultaClienteFormGroup">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            Rut Empresa
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            <ion-input type="text" formControlName="rutEmpresa"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Rut Representante Legal
+        </ion-col>
+        <ion-col>
+          <ion-input type="text" formControlName="rutRepresentanteLegal"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="consultaCliente()">Consulta Cliente</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+  <div *ngIf="!existeEmpresa">
+
+    <h2>Crear Empresa</h2>
+
+    <form [formGroup]="empresaFormGroup" (ngSubmit)="addEmpresa()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              Rut Empresa
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input type="text" formControlName="rutEmpresa"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Nombre Empresa
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="nombreEmpresa"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Telefono
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="telefonoEmpresa"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Email
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="emailEmpresa"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="addEmpresa()">Crear Empresa</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>  
+
+  <div *ngIf="!existeRepresentanteLegal">
+
+    <h2>Crear Representante Legal</h2>
+
+    <form [formGroup]="representanteLegal" (ngSubmit)="addRepresentanteLegal()">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div>
+              Rut Empresa
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-input type="text" formControlName="rutEmpresa"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Rut Representante Legal
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="rutRepresentanteLegal"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Nombre Representante Legal
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="nombreRepresentanteLegal"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Telefono
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="telefonoRepresentanteLegal"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Email
+          </ion-col>
+          <ion-col>
+            <ion-input type="text" formControlName="emailRepresentanteLegal"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="addRepresentanteLegal()">Crear Representante</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>

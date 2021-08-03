@@ -1,0 +1,118 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      <h1>Venta y Voucher</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Venta y Voucher</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h2 class="ion-text-center"> Crear Venta</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Monto
+      </ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="monto" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Tipo
+      </ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="tipoVenta" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Voucher Id
+      </ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="voucherId" type="text"></ion-input>
+      </ion-col>
+    </ion-row>    
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="addVenta()">Agregar Venta</ion-button>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+
+  <h2 class="ion-text-center">Crear Voucher</h2>
+
+  <h3>Ingresar Productos</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Código de Barras
+      </ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="codigoBarra" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Cantidad
+      </ion-col>
+      <ion-col>
+        <ion-input [(ngModel)]="cantidadProducto" type="text"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="addProducto()">Agregar Producto</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="productos.length > 0">
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="addVoucher()">Agregar Voucher</ion-button>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+
+  <div *ngIf="productos.length > 0">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          Código de Barras
+        </ion-col>
+        <ion-col>
+          Cantidad
+        </ion-col>
+      </ion-row>
+      <div *ngFor="let producto of productos; let i = index">
+        <ion-row>
+          <ion-col>
+            {{ producto.id }}
+          </ion-col>
+          <ion-col>
+            {{ producto.cantidad }}
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-grid>
+  </div>
+
+</ion-content>

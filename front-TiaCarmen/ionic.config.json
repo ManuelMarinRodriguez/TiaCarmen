@@ -1,0 +1,7 @@
+{
+  "name": "carniceria-tia-carmen",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

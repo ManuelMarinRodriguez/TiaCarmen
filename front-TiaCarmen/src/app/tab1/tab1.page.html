@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <h1 class="ion-text-center">Pagar Boleta</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="venta ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Pagar Boleta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        Boleta Id
+      </ion-col>
+      <ion-col>
+        <ion-input id="name" type="text" [formControl]="formControlId"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="pagarBoleta()">Pagar Boleta</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+
+  <div class="form-control-feedback" *ngIf="formControlId.errors && (formControlId.dirty || formControlId.touched)">
+    <p *ngIf="formControlId.errors.pattern" class="text-danger">Solo números</p>
+  </div>
+</ion-content>
